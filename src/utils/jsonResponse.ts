@@ -1,4 +1,4 @@
-import { IResponseType } from "../../types/IResponseType";
+import { IResponseType } from "../types/IResponseType";
 
 const jsonResponse = ({
   res,

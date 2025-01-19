@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import logger from "../utils/helperFunc/logger";
+import logger from "../utils/logger";
 
 const performanceLogger = (
   req: Request,

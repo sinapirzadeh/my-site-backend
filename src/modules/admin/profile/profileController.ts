@@ -1,15 +1,15 @@
-import jsonResponse from "../../../utils/helperFunc/jsonResponse";
+import jsonResponse from "../../../utils/jsonResponse";
 import baseController from "../../baseController";
 import { getProflie, createOrUpdateOne } from "./profileServices";
 import { Response, Request, NextFunction } from "express";
 
-class userController extends baseController {
+class profileController extends baseController {
   async getUsers(req: Request, res: Response, next: NextFunction) {
     try {
       const profile = await getProflie();
       return jsonResponse({
         res,
-        data: { profile },
+        data: profile,
       });
     } catch (err: any) {
       next(err);
@@ -18,18 +18,21 @@ class userController extends baseController {
 
   async createUser(req: Request, res: Response, next: NextFunction) {
     try {
+      console.log(133);
       if (!req.file) return jsonResponse({ res, msg: "No file uploaded!" });
-      const image_location = req.file?.path;
+      const image_location = req.file?.location;
       const isCreated = await createOrUpdateOne(req.body, image_location);
       if (isCreated) {
         return jsonResponse({
           res,
           msg: "Seccess!",
+          code: 201,
         });
       }
       return jsonResponse({
         res,
         msg: "Failed!",
+        code: 500,
       });
     } catch (err: any) {
       next(err);
@@ -37,4 +40,4 @@ class userController extends baseController {
   }
 }
 
-export default new userController();
+export default new profileController();

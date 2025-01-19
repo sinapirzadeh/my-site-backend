@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import logger from "../utils/helperFunc/logger";
+import logger from "../utils/logger";
 
 const dbConect = async (dbAddres: string): Promise<void> => {
   await mongoose

@@ -4,5 +4,5 @@ export interface IResponseType {
   res: Response;
   msg?: string;
   code?: number;
-  data?: object;
+  data?: {} | any;
 }

@@ -13,7 +13,7 @@ export default winston.createLogger({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.simple(),
-        winston.format.printf((info) => `${info.level} : ${info.message}`)
+        winston.format.printf((info) => `[${info.level}] : ${info.message}`)
       ),
     }),
     new winston.transports.File({

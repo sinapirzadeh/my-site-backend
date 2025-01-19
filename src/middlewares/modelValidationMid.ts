@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import validateRequestBody from "../utils/helperFunc/validateRequestBody";
+import validateRequestBody from "../utils/validateRequestBody";
 
 const modelValidationMid = (
   req: Request,

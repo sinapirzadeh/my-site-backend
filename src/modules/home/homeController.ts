@@ -1,4 +1,4 @@
-import jsonResponse from "../../utils/helperFunc/jsonResponse";
+import jsonResponse from "../../utils/jsonResponse";
 import baseController from "../baseController";
 import { getProfile } from "./homeServices";
 import { Request, Response, NextFunction } from "express";
@@ -9,7 +9,7 @@ class userController extends baseController {
       const profile = await getProfile();
       return jsonResponse({
         res,
-        data: { profile },
+        data: profile,
       });
     } catch (err: Error | any) {
       next(err);

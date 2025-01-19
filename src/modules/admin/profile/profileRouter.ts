@@ -2,7 +2,7 @@ import { Router } from "express";
 import modelValidation from "../../../middlewares/modelValidationMid";
 import profileController from "./profileController";
 import profileValidation from "./profileValidation";
-import multer from "../../../utils/helperFunc/multer";
+import multer from "../../../utils/multer";
 
 const app = Router();
 

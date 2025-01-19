@@ -1,6 +1,6 @@
 import { check } from "express-validator";
 
-const userValidation = () => {
+const profileValidation = () => {
   return [
     check("name").isEmpty().withMessage("name is required"),
     check("short_des").isEmpty().withMessage("short_des is required"),
@@ -14,4 +14,4 @@ const userValidation = () => {
   ];
 };
 
-export default userValidation;
+export default profileValidation;

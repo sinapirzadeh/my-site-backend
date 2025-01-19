@@ -1,6 +1,6 @@
 import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
 import serverError from "../errors/serverError";
-import logger from "../utils/helperFunc/logger";
+import logger from "../utils/logger";
 
 const ErrorHandelingMid = (
   error: ErrorRequestHandler,
