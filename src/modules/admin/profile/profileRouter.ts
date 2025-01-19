@@ -6,14 +6,14 @@ import multer from "../../../utils/multer";
 
 const app = Router();
 
-app.get("/", profileController.getUsers);
+app.get("/", profileController.getProfile);
 
 app.post(
   "/update",
   multer.single("image_url"),
   modelValidation,
   profileValidation(),
-  profileController.createUser
+  profileController.createProfile
 );
 
 export default app;

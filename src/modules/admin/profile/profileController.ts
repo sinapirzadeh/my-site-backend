@@ -4,7 +4,7 @@ import { getProflie, createOrUpdateOne } from "./profileServices";
 import { Response, Request, NextFunction } from "express";
 
 class profileController extends baseController {
-  async getUsers(req: Request, res: Response, next: NextFunction) {
+  async getProfile(req: Request, res: Response, next: NextFunction) {
     try {
       const profile = await getProflie();
       return jsonResponse({
@@ -16,7 +16,7 @@ class profileController extends baseController {
     }
   }
 
-  async createUser(req: Request, res: Response, next: NextFunction) {
+  async createProfile(req: Request, res: Response, next: NextFunction) {
     try {
       console.log(133);
       if (!req.file) return jsonResponse({ res, msg: "No file uploaded!" });

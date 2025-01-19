@@ -14,7 +14,7 @@ export const createOrUpdateOne = async (
     if (imageLocation) {
       data.image_url = imageLocation;
     }
-    
+
     const existingProfile = await profile.findOne({});
     if (existingProfile) {
       await profile.updateOne({}, data);

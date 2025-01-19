@@ -5,7 +5,7 @@ const skill = mongoose.model(
   new mongoose.Schema(
     {
       title: { type: String, required: true },
-      process: { type: Number, required: true },
+      process: { type: Number, min: 0, max: 100, defult: 0 },
       is_delete: { type: Boolean, default: false },
     },
     {
