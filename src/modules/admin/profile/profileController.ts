@@ -18,7 +18,6 @@ class profileController extends baseController {
 
   async createProfile(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(133);
       if (!req.file) return jsonResponse({ res, msg: "No file uploaded!" });
       const image_location = req.file?.location;
       const isCreated = await createOrUpdateOne(req.body, image_location);

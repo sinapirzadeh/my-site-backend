@@ -1,6 +1,6 @@
 import jsonResponse from "../../utils/jsonResponse";
 import baseController from "../baseController";
-import { getProfile } from "./homeServices";
+import { getProfile, getProjects, getSkills } from "./homeServices";
 import { Request, Response, NextFunction } from "express";
 
 class userController extends baseController {
@@ -16,12 +16,19 @@ class userController extends baseController {
     }
   }
 
-  async getProjects(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<void> {
+  async getSkills(req: Request, res: Response, next: NextFunction) {
     try {
+      const skills = await getSkills();
+      return jsonResponse({ res, data: skills });
+    } catch (err: Error | any) {
+      next(err);
+    }
+  }
+
+  async getProjects(req: Request, res: Response, next: NextFunction) {
+    try {
+      const projects = await getProjects();
+      return jsonResponse({ res, data: projects });
     } catch (err: Error | any) {
       next(err);
     }
@@ -29,6 +36,8 @@ class userController extends baseController {
 
   async getArticles(req: Request, res: Response, next: NextFunction) {
     try {
+      const skills = await getSkills();
+      return jsonResponse({ res, data: skills });
     } catch (err: Error | any) {
       next(err);
     }

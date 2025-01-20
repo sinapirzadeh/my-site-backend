@@ -2,7 +2,7 @@ import skill from "../../../models/skill";
 import { ISkillType } from "./skillTypes";
 
 export const getSkills = async () => {
-  const skills = await skill.find();
+  const skills = await skill.find({ is_delete: false });
   return skills;
 };
 

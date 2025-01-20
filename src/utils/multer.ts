@@ -1,6 +1,6 @@
 // multerConfig.ts
 import multer, { FileFilterCallback } from "multer";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"; // AWS SDK v3
+import { S3Client } from "@aws-sdk/client-s3"; // AWS SDK v3
 import multerS3 from "multer-s3";
 import { Request } from "express";
 import env from "../config/env";
