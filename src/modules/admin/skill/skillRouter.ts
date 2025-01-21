@@ -9,8 +9,8 @@ app.get("/", skillController.getSkills);
 
 app.post(
   "/",
-  modelValidationMid,
   skillValidation(),
+  modelValidationMid,
   skillController.createSkill
 );
 

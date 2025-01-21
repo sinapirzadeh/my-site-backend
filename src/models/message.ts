@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
+import { model, Schema } from "mongoose";
 
-module.exports = mongoose.model(
+const message = model(
   "Message",
-  new mongoose.Schema(
+  new Schema(
     {
       subject: { type: String, required: true },
-      comment: { type: String, required: true },
+      message: { type: String, required: true },
       is_read: { type: Boolean, default: false },
       is_delete: { type: Boolean, default: false },
     },
@@ -14,3 +14,5 @@ module.exports = mongoose.model(
     }
   )
 );
+
+export default message;
