@@ -1,4 +1,11 @@
-import { IResponseType } from "../types/IResponseType";
+import { Response } from "express";
+
+interface IResponseType {
+  res: Response;
+  msg?: string;
+  code?: number;
+  data?: {} | any;
+}
 
 const jsonResponse = ({
   res,

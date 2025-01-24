@@ -1,5 +1,6 @@
 import article from "../../models/article";
-import { IArticleType } from "./blogTypes";
+import comment from "../../models/comment";
+import { IArticleType, ICommentType } from "./blogTypes";
 
 export const getArticles = async (): Promise<IArticleType[]> => {
   try {
@@ -35,4 +36,25 @@ export const addLike = async (_id: string): Promise<void> => {
       error instanceof Error ? error.message : "Error on Article Like Count!."
     );
   }
+};
+
+export const addComment = async (
+  data: ICommentType,
+  _id: string
+): Promise<void> => {
+  try {
+    await comment.create({ ...data, article: _id });
+  } catch (error: Error | unknown) {
+    throw new Error(
+      error instanceof Error ? error.message : "Error on Article Like Count!."
+    );
+  }
+};
+
+export const getAllComment = async (_id: string) => {
+  const data = await comment
+    .find({ is_delete: false, article: _id })
+    .sort({ updatedAt: -1 })
+    .lean();
+  return data;
 };

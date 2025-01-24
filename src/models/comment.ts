@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-module.exports = mongoose.model(
+const comment = mongoose.model(
   "Comment",
   new mongoose.Schema(
     {
@@ -19,3 +19,5 @@ module.exports = mongoose.model(
     }
   )
 );
+
+export default comment;

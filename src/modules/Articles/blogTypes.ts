@@ -9,3 +9,12 @@ export interface IArticleType {
   like_count: number;
   is_delete: boolean;
 }
+
+export interface ICommentType {
+  _id: string;
+  message: string;
+  is_trusted: boolean;
+  article: Object;
+  is_delete: boolean;
+  updatedAt: string;
+}

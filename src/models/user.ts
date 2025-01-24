@@ -1,8 +1,8 @@
-const { default: mongoose } = require("mongoose");
+import { model, Schema } from "mongoose";
 
-module.exports = mongoose.model(
+const user = model(
   "User",
-  new mongoose.Schema(
+  new Schema(
     {
       username: String,
       password: String,
@@ -12,3 +12,5 @@ module.exports = mongoose.model(
     }
   )
 );
+
+export default user;
