@@ -9,5 +9,5 @@ server
     logger.info(`server start on : http://localhost:${env.serverPort}/api/`)
   )
   .on("error", (err: Error) =>
-    logger.error(`Failed to start server: ${err.message}`)
+    logger.error(`Failed to start server : ${err.message}`)
   );
