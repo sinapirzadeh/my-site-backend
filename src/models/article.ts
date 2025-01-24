@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-module.exports = mongoose.model(
+const article = mongoose.model(
   "Article",
   new mongoose.Schema(
     {
@@ -10,15 +10,14 @@ module.exports = mongoose.model(
       image_alt: { type: String, required: true },
       description: { type: String, required: true },
       like_count: { type: Number, default: 0 },
-      isLiked: { type: Boolean },
-      comments: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" },
-      ips: { type: mongoose.Schema.Types.ObjectId, ref: "IP" },
-      meta_description: { type: String, maxlength: 160 },
-      meta_keywords: [String],
+      ips: { type: mongoose.Schema.Types.ObjectId, ref: "Ip" },
       is_delete: { type: Boolean, default: false },
+      // comments: { type: mongoose.Schema.Types.ObjectId, ref: "Comment" },
     },
     {
       timestamps: true,
     }
   )
 );
+
+export default article;

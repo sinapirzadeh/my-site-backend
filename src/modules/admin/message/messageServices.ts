@@ -8,7 +8,7 @@ export const getMessages = async () => {
 };
 
 export const readMessage = async (id: string) => {
-  const isDeleted = await message.updateOne(
+  const isDeleted = await message.findOneAndUpdate(
     { _id: id },
     { is_read: true },
     { new: true }
@@ -16,11 +16,12 @@ export const readMessage = async (id: string) => {
   return isDeleted ? true : false;
 };
 
-export const delMessage = async (id: string) => {
-  const isDeleted = await message.updateOne(
-    { _id: id },
-    { is_delete: true },
-    { new: true }
-  );
-  return isDeleted ? true : false;
+export const delMessage = async (id: string): Promise<void> => {
+  try {
+    await message.findOneAndUpdate({ _id: id }, { is_delete: true });
+  } catch (error) {
+    throw new Error(
+      error instanceof Error ? error.message : "Error on Send Msg"
+    );
+  }
 };

@@ -1,13 +1,13 @@
 import jsonResponse from "../../utils/jsonResponse";
 import baseController from "../baseController";
 import {
+  getHomeArticles,
   getProfile,
   getProjects,
   getSkills,
   postMessage,
 } from "./homeServices";
 import { Request, Response, NextFunction } from "express";
-import { sendEmail } from "../../utils/emailService";
 
 class userController extends baseController {
   async getProfile(req: Request, res: Response, next: NextFunction) {
@@ -26,7 +26,7 @@ class userController extends baseController {
     try {
       const skills = await getSkills();
       return jsonResponse({ res, data: skills });
-    } catch (err: Error | any) {
+    } catch (err: Error | unknown) {
       next(err);
     }
   }
@@ -42,8 +42,8 @@ class userController extends baseController {
 
   async getArticles(req: Request, res: Response, next: NextFunction) {
     try {
-      const skills = await getSkills();
-      return jsonResponse({ res, data: skills });
+      const articleHome = await getHomeArticles();
+      return jsonResponse({ res, data: articleHome });
     } catch (err: Error | any) {
       next(err);
     }
@@ -51,15 +51,11 @@ class userController extends baseController {
 
   async postContact(req: Request, res: Response, next: NextFunction) {
     try {
-      const is_send = await postMessage(req.body);
-      if (is_send) {
-        // console.log("ok");
-        // await sendEmail();
-        // console.log("ok send email");
-        return jsonResponse({ res, msg: "پیام شما ارسال شد" });
-      } else {
-        return jsonResponse({ res, msg: ".خطایی رخ داد" });
-      }
+      await postMessage(req.body);
+      // console.log("ok")
+      // await sendEmail();
+      // console.log("ok send email");
+      return jsonResponse({ res, msg: "پیام شما ارسال شد" });
     } catch (err: Error | any) {
       next(err);
     }

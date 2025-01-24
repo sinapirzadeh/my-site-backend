@@ -12,8 +12,8 @@ export const postSkill = async (bodyData: ISkillType) => {
 };
 
 export const delSkill = async (id: string) => {
-  const isDeleted = await skill.updateOne(
-    { _id: id },
+  const isDeleted = await skill.findOneAndUpdate(
+    { _id:id },
     { is_delete: true },
     { new: true }
   );

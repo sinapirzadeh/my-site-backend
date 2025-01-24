@@ -12,8 +12,8 @@ export const postAddProject = async (data: IProjectType, img_loc: string) => {
 };
 
 export const delProject = async (id: string) => {
-  const is_delete = await project.updateOne(
-    { _id: id },
+  const is_delete = await project.findOneAndUpdate(
+    { _id:id },
     { is_delete: true },
     { new: true }
   );
